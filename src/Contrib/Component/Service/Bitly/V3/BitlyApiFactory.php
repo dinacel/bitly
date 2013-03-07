@@ -1,9 +1,6 @@
 <?php
 namespace Contrib\Component\Service\Bitly\V3;
 
-use Contrib\Component\Service\Bitly\V3\Request\BitlyRequest;
-use Contrib\Component\Service\Bitly\V3\Response\BitlyResponse;
-
 class BitlyApiFactory
 {
     public function __construct($token)

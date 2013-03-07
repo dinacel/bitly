@@ -22,6 +22,7 @@ class Links extends Bitly
      * Authentication: oauth2 / api key
      *
      * Parameters
+     *
      * shortUrl - refers to one or more bitly links. e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
      * hash     - refers to one or more bitly hashes. e.g.: 2bYgqR or a-custom-name
      *
