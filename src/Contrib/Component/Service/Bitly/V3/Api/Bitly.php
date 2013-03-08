@@ -10,7 +10,18 @@ use Contrib\Component\Service\Bitly\V3\Response\BitlyResponse;
  */
 class Bitly
 {
+    /**
+     * API host.
+     *
+     * @var string
+     */
     const BITLY_API_URL = 'http://api.bit.ly';
+
+    /**
+     * API host (SSL).
+     *
+     * @var string
+     */
     const BITLY_API_SECURE_URL = 'https://api-ssl.bit.ly';
 
     /**
@@ -55,6 +66,13 @@ class Bitly
 
     // API
 
+    /**
+     * Execute HTTP GET method.
+     *
+     * @param string $path  Relative path.
+     * @param array  $query Query parameters.
+     * @return mixed Response data.
+     */
     public function get($path, array $query = array())
     {
         $this->client->setUri(static::BITLY_API_SECURE_URL);
@@ -66,6 +84,12 @@ class Bitly
 
     // internal method
 
+    /**
+     * Prepare API arguments.
+     *
+     * @param array $query API arguments.
+     * @return array API arguments containing access token and response format.
+     */
     protected function prepareArgs(array $query = array())
     {
         $args = array_filter($query, function ($value) { return $value !== null; });
@@ -76,6 +100,12 @@ class Bitly
         );
     }
 
+    /**
+     * Return response data.
+     *
+     * @param string $response Raw response body.
+     * @return mixed Response data.
+     */
     protected function getResponseData($response)
     {
         $res = new BitlyResponse($this->format, $response);

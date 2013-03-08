@@ -1,10 +1,25 @@
 <?php
 namespace Contrib\Component\Service\Bitly\V3\Response;
 
+/**
+ * Bit.ly JSON response.
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class JsonResponse extends BitlyResponse
 {
+    /**
+     * Response format.
+     *
+     * @var string
+     */
     const FORMAT = 'json';
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see \Contrib\Component\Service\Bitly\V3\Response\BitlyResponse::getResponseData()
+     */
     public function getResponseData()
     {
         $json = json_decode($this->response, true);

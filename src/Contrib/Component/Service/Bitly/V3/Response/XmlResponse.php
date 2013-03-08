@@ -1,10 +1,25 @@
 <?php
 namespace Contrib\Component\Service\Bitly\V3\Response;
 
+/**
+ * Bit.ly XML response.
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class XmlResponse extends BitlyResponse
 {
+    /**
+     * Response format.
+     *
+     * @var string
+     */
     const FORMAT = 'xml';
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see \Contrib\Component\Service\Bitly\V3\Response\BitlyResponse::getResponseData()
+     */
     public function getResponseData()
     {
         $xml = simplexml_load_string($this->response);
