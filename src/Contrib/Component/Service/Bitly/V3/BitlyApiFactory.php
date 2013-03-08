@@ -30,6 +30,10 @@ class BitlyApiFactory
      */
     public function __call($name, array $args)
     {
+        if (false === strpos($name, 'get')) {
+            throw new \BadMethodCallException(sprintf('Method not found: %s', $name));
+        }
+
         $apiClassName = substr($name, 3);
         $class        = __NAMESPACE__ . '\\Api\\' . $apiClassName;
 
