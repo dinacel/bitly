@@ -14,6 +14,7 @@ namespace Contrib\Component\Service\Bitly\V3\Api;
  * /v3/user/shorten_counts
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @see    http://dev.bitly.com/user_metrics.html
  */
 class UserMetrics extends Bitly
 {

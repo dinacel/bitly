@@ -10,6 +10,7 @@ namespace Contrib\Component\Service\Bitly\V3\Api;
  * /v3/user/tracking_domain_list
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @see    http://dev.bitly.com/user_info.html
  */
 class UserInfoHistory extends Bitly
 {

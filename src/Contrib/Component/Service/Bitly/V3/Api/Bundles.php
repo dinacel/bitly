@@ -25,6 +25,7 @@ namespace Contrib\Component\Service\Bitly\V3\Api;
  * /v3/user/bundle_history
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @see    http://dev.bitly.com/bundles.html
  */
 class Bundles extends Bitly
 {

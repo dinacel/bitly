@@ -14,6 +14,7 @@ namespace Contrib\Component\Service\Bitly\V3\Api;
  * /v3/link/shares
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @see    http://dev.bitly.com/link_metrics.html
  */
 class LinkMetrics extends Bitly
 {

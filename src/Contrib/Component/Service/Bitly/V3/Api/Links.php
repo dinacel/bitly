@@ -13,6 +13,7 @@ namespace Contrib\Component\Service\Bitly\V3\Api;
  * /v3/user/link_save
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @see    http://dev.bitly.com/links.html
  */
 class Links extends Bitly
 {
