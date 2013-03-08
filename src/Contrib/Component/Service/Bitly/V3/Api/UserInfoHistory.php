@@ -61,7 +61,7 @@ class UserInfoHistory extends Bitly
             'full_name' => $fullName,
         );
 
-        return $this->get('/usr/info', $query);
+        return $this->get('/user/info', $query);
     }
 
     /**
@@ -130,7 +130,7 @@ class UserInfoHistory extends Bitly
             'user'           => $user,
         );
 
-        return $this->get('/usr/link_history', $query);
+        return $this->get('/user/link_history', $query);
     }
 
     /**
@@ -184,7 +184,7 @@ class UserInfoHistory extends Bitly
             'expand_user'      => $expandUser,
         );
 
-        return $this->get('/usr/network_history', $query);
+        return $this->get('/user/network_history', $query);
     }
 
     /**
@@ -198,6 +198,6 @@ class UserInfoHistory extends Bitly
      */
     public function trackingDomainList()
     {
-        return $this->get('/usr/tracking_domain_list');
+        return $this->get('/user/tracking_domain_list');
     }
 }

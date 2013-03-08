@@ -67,7 +67,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/clicks', $query);
+        return $this->get('/user/clicks', $query);
     }
 
     /**
@@ -118,7 +118,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/countries', $query);
+        return $this->get('/user/countries', $query);
     }
 
     /**
@@ -165,7 +165,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/popular_links', $query);
+        return $this->get('/user/popular_links', $query);
     }
 
     /**
@@ -216,7 +216,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/referrers', $query);
+        return $this->get('/user/referrers', $query);
     }
 
     /**
@@ -268,7 +268,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/referring_domains', $query);
+        return $this->get('/user/referring_domains', $query);
     }
 
     /**
@@ -316,7 +316,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/share_counts', $query);
+        return $this->get('/user/share_counts', $query);
     }
 
     /**
@@ -365,7 +365,7 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/share_counts_by_share_type', $query);
+        return $this->get('/user/share_counts_by_share_type', $query);
     }
 
     /**
@@ -411,6 +411,6 @@ class UserMetrics extends Bitly
             'unit_reference_ts' => $unitReferenceTs,
         );
 
-        return $this->get('/usr/shorten_counts', $query);
+        return $this->get('/user/shorten_counts', $query);
     }
 }
