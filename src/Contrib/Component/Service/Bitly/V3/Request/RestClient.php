@@ -18,6 +18,20 @@ class RestClient
     protected $adapter;
 
     /**
+     * Base URI.
+     *
+     * @var string
+     */
+    protected $uri;
+
+    /**
+     * Accessed URL.
+     *
+     * @var string
+     */
+    protected $url = null;
+
+    /**
      * Constructor.
      *
      * @param mixed $adapter HTTP client adapter.
@@ -31,6 +45,8 @@ class RestClient
         }
     }
 
+    // API
+
     /**
      * Execute HTTP GET method.
      *
@@ -40,9 +56,9 @@ class RestClient
      */
     public function restGet($path, array $query = array())
     {
-        $url = $this->buildUrl($path, $query);
+        $this->url = $this->buildUrl($path, $query);
 
-        return $this->adapter->get($url);
+        return $this->adapter->get($this->url);
     }
 
     // internal method
@@ -56,6 +72,10 @@ class RestClient
      */
     protected function buildUrl($path, array $query)
     {
+        if (!isset($this->uri)) {
+            throw new \RuntimeException('base URI is not set.');
+        }
+
         return $this->uri . $path . $this->queryString($query);
     }
 
@@ -76,6 +96,7 @@ class RestClient
                     if (is_array($v)) {
                         throw new \InvalidArgumentException('Invalid query string.');
                     }
+
                     $qs[] = http_build_query(array($key => $v));
                 }
             } else {
@@ -107,6 +128,29 @@ class RestClient
     // accessor
 
     /**
+     * Set HTTP client adapter.
+     *
+     * @param mixed $adapter HTTP client adapter
+     * @return \Contrib\Component\Service\Bitly\V3\Request\RestClient
+     */
+    public function setAdapter($adapter)
+    {
+        $this->adapter = $adapter;
+
+        return $this;
+    }
+
+    /**
+     * Return HTTP client adapter.
+     *
+     * @return mixed HTTP client adapter.
+     */
+    public function getAdapter()
+    {
+        return $this->adapter;
+    }
+
+    /**
      * Set URI.
      *
      * @param string $uri URI.
@@ -117,5 +161,25 @@ class RestClient
         $this->uri = $uri;
 
         return $this;
+    }
+
+    /**
+     * Return URI.
+     *
+     * @return string URI.
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * Return accessed URL.
+     *
+     * @return string Accessed URL.
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

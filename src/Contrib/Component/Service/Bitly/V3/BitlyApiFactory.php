@@ -20,6 +20,8 @@ class BitlyApiFactory
         $this->token = $token;
     }
 
+    // API
+
     /**
      * Return API client.
      *
@@ -30,13 +32,28 @@ class BitlyApiFactory
      */
     public function __call($name, array $args)
     {
-        if (false === strpos($name, 'get')) {
-            throw new \BadMethodCallException(sprintf('Method not found: %s', $name));
+        if (false !== strpos($name, 'get')) {
+            $apiClassName = substr($name, 3);
+            $class        = __NAMESPACE__ . '\\Api\\' . $apiClassName;
+
+            return $this->createApi($class, $args);
         }
 
-        $apiClassName = substr($name, 3);
-        $class        = __NAMESPACE__ . '\\Api\\' . $apiClassName;
+        throw new \BadMethodCallException(sprintf('Method not found: %s', $name));
+    }
 
+    // internal method
+
+    /**
+     * Return API client.
+     *
+     * @param string $class API client class name.
+     * @param array  $args  Constructor options.
+     * @return \Contrib\Component\Service\Bitly\V3\Api\Bitly
+     * @throws \RuntimeException
+     */
+    protected function createApi($class, array $args)
+    {
         if (!class_exists($class)) {
             throw new \RuntimeException(sprintf('Class not found: %s', $class));
         }

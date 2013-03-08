@@ -16,6 +16,13 @@ class Curl
     protected $options;
 
     /**
+     * Return response info.
+     *
+     * @var array|null
+     */
+    protected $info = null;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -62,11 +69,12 @@ class Curl
 
         curl_setopt_array($curl, $options);
 
-        $response = curl_exec($curl);
-        $info     = curl_getinfo($curl);
+        $response   = curl_exec($curl);
+        $this->info = curl_getinfo($curl);
+        $statusCode = $this->info['http_code'];
 
-        if ($info['http_code'] !== 200) {
-            $message = sprintf('Failed to call API. status code: %d', $info['http_code']);
+        if ($statusCode !== 200) {
+            $message = sprintf('Failed to call API. status code: %d', $statusCode);
 
             throw new \RuntimeException($message);
         }
@@ -74,5 +82,17 @@ class Curl
         curl_close($curl);
 
         return $response;
+    }
+
+    // accessor
+
+    /**
+     * Return response info.
+     *
+     * @return array|null Response info.
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

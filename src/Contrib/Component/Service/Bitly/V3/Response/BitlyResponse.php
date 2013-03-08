@@ -65,4 +65,16 @@ class BitlyResponse
 
         throw new \RuntimeException(sprintf('Unsupported format: %s', $format));
     }
+
+    // accessor
+
+    /**
+     * Return raw response body.
+     *
+     * @return string Raw response body.
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
 }

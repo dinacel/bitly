@@ -46,6 +46,13 @@ class Bitly
     protected $client;
 
     /**
+     * BitlyResponse object.
+     *
+     * @var BitlyResponse
+     */
+    protected $response;
+
+    /**
      * Constructor.
      *
      * @param string     $token
@@ -69,7 +76,7 @@ class Bitly
     /**
      * Execute HTTP GET method.
      *
-     * @param string $path  Relative path.
+     * @param string $path  Relative path under /v3.
      * @param array  $query Query parameters.
      * @return mixed Response data.
      */
@@ -108,8 +115,40 @@ class Bitly
      */
     protected function getResponseData($response)
     {
-        $res = new BitlyResponse($this->format, $response);
+        $this->response = new BitlyResponse($this->format, $response);
 
-        return $res->getResponseData();
+        return $this->response->getResponseData();
+    }
+
+    // accessor
+
+    /**
+     * Return response format.
+     *
+     * @return string Response format.
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Return Restclient object.
+     *
+     * @return \Contrib\Component\Service\Bitly\V3\Request\RestClient
+     */
+    public function getRestClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Return BitlyResponse object.
+     *
+     * @return \Contrib\Component\Service\Bitly\V3\Response\BitlyResponse
+     */
+    public function getResponse()
+    {
+        return $this->response;
     }
 }
