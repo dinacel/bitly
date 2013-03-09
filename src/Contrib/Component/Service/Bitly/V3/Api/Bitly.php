@@ -99,12 +99,36 @@ class Bitly
      */
     protected function prepareArgs(array $query = array())
     {
-        $args = array_filter($query, function ($value) { return $value !== null; });
+        $query = array_filter($query, function ($value) { return $value !== null; });
+        $query = $this->convertBoolean($query);
 
-        return $args + array(
+        return $query + array(
             'access_token' => $this->token,
             'format'       => $this->format,
         );
+    }
+
+    /**
+     * Convert boolean value to string.
+     *
+     * @param array $query Query parameters.
+     * @return array Query parameters.
+     */
+    protected function convertBoolean(array $query)
+    {
+        $q = array();
+
+        foreach ($query as $key => $value) {
+            if ($value === true) {
+                $q[$key] = 'true';
+            } else if ($value === false) {
+                $q[$key] = 'false';
+            } else {
+                $q[$key] = $value;
+            }
+        }
+
+        return $q;
     }
 
     /**
