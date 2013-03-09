@@ -298,12 +298,12 @@ class LinkMetrics extends Bitly
      * domain            - the domain referring clicks.
      * url               - the complete URL of the domain referring clicks.
      *
-     * @param string         $link
-     * @param string         $unit
-     * @param integer        $units
-     * @param integer|string $timezone
-     * @param integer        $limit
-     * @param integer        $unitReferenceTs
+     * @param string         $link            a bitly link.
+     * @param string         $unit            minute | hour | day | week | month default:day
+     * @param integer        $units           an integer representing the time units to query data for. pass -1 to return all units of time.
+     * @param integer|string $timezone        an integer hour offset from UTC (-14..14), or a timezone string default:America/New_York.
+     * @param integer        $limit           1..1000 (default=100)
+     * @param integer        $unitReferenceTs an epoch timestamp, indicating the most recent time for which to pull metrics. default:now
      * @see http://dev.bitly.com/link_metrics.html#v3_link_referring_domains
      */
     public function referringDomains($link, $unit = 'day', $units = -1, $timezone = null, $limit = null, $unitReferenceTs = null)
@@ -338,6 +338,13 @@ class LinkMetrics extends Bitly
      *                     Note: the value of unit_reference_ts rounds to the nearest unit.
      *                     Note: historical data is stored hourly beyond the most recent 60 minutes. If a unit_reference_ts is specified, unit cannot be minute.
      *
+     * @param string         $link            a bitly link
+     * @param string         $unit            minute | hour | day | week | month default:day
+     * @param integer        $units           an integer representing the time units to query data for. pass -1 to return all units of time.
+     * @param integer|string $timezone        an integer hour offset from UTC (-14..14), or a timezone string default:America/New_York.
+     * @param boolean        $rollup          true | false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
+     * @param integer        $limit           1..1000 (default=100)
+     * @param integer        $unitReferenceTs an epoch timestamp, indicating the most recent time for which to pull metrics. default:now
      * @see http://dev.bitly.com/link_metrics.html#v3_link_shares
      */
     public function shares($link, $unit = 'day', $units = -1, $timezone = null, $rollup = null, $limit = null, $unitReferenceTs = null)
