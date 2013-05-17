@@ -29,7 +29,7 @@ class Curl
     {
         $this->options = array(
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
+            //CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTPGET        => false,
             CURLOPT_POST           => false,
             CURLOPT_URL            => null,
